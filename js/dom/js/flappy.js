@@ -143,7 +143,7 @@ function colidiu(passaro, barreiras) {
             || estaoSobrepostos(passaro.elemento, inferior)
         }
     })
-    return colidiu
+    //return colidiu
 }
 
 
