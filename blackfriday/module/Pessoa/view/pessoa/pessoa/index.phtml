@@ -1,0 +1,31 @@
+<?php
+
+?>
+
+<h1>Lista de Pessoas</h1> 
+
+<table class="table table-stripped">
+<tr>
+    <th>Código</th>
+    <th>Nome</th>
+    <th>Sobrenome</th>
+    <th>E-mail</th>
+    <th>Situação</th>
+</tr>
+
+<?php
+
+foreach ($pessoas as $pes) :
+ ?>
+ <tr>
+    <td><?=$pes->getId()?></td>
+    <td><?=$pes->getNome()?></td>
+    <td><?=$pes->getSobrenome()?></td>
+    <td><?=$pes->getEmail()?></td>
+    <td><?=$pes->getSituacao()?></td>
+    
+ </tr>
+ <?php
+    endforeach;
+?>
+</table>
