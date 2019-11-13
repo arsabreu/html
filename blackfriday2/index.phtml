@@ -1,0 +1,108 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<title>Black Friday Shopping Cidade</title>
+	<meta charset="utf-8">
+	<link rel="stylesheet" type="text/css" href="css/style.css">
+	
+
+
+</head>
+<body>
+
+<?
+if(isset($erro))
+	echo '<div style="color:#F00">'.$erro.'</div><br/><br/>';
+else
+if(isset($sucesso))
+	echo '<div style="color:#00f">'.$sucesso.'</div><br/><br/>';
+ 
+?>
+
+	<header>
+		<a href="#"><img src="img/black-friday-landing-cadastro-email_01.png"></a>
+	</header>
+	<main>
+		<p class="fr-form"><span>Cadastre-se agora</span> para receber<br>as melhores ofertas em primeira mão</p>
+		<div class="formulario">
+		
+		
+				<form action="<?=$_SERVER["PHP_SELF"]?>" method="POST">
+			<label for="email">
+				<input type="email" name="email" id="email" placeholder="Digite seu e-mail">
+			</label>
+			<div class="button"><input type="submit" name="cadastrar" value="CADASTRAR"></div>
+		</form>
+		
+		
+
+<?
+$obj_mysqli = new mysqli("127.0.0.1", "root", "asus1228@", "mktpcidade");
+ 
+if ($obj_mysqli->connect_errno)
+{
+	echo "Ocorreu um erro na conexão com o banco de dados.";
+	exit;
+}
+ 
+mysqli_set_charset($obj_mysqli, 'utf8');
+ 
+//Validando a existência dos dados
+if(isset($_POST["email"]))
+{
+	
+	if(empty($_POST["email"]))
+		$erro = "Campo e-mail obrigatório";
+	else
+	{
+		//Vamos realizar o cadastro ou alteração dos dados enviados.
+		$email  = $_POST["email"];
+				
+		$stmt = $obj_mysqli->prepare("INSERT INTO `clientes` (`email`) VALUES (?)");
+		$stmt->bind_param('s', $email);
+		
+		if(!$stmt->execute())
+		{
+			$erro = $stmt->error;
+		}
+		else
+		{
+			$sucesso = "Dados cadastrados com sucesso!";
+		}
+	}
+}
+?> 
+	
+	</div>
+		<p class="fr-carrosel">Confira algumas das lojas que terão ofertas incriveis na Black Friday</p>
+		<article class="carrosel">
+			<img src="#" alt="#" title="#">
+			<img src="#" alt="#" title="#">
+			<img src="#" alt="#" title="#">
+			<img src="#" alt="#" title="#">
+		</article>
+		<article class="categorias">
+			<a href="#"><img src="img/black-friday-landing-cadastro-email_16.png" alt="Beleza" title="Beleza"></a>
+
+			<a href="#"><img src="img/black-friday-landing-cadastro-email_18.png" alt="Calçados" title="Calçados"></a>
+
+			<a href="#"><img src="img/black-friday-landing-cadastro-email_20.png" alt="Livros" title="Livros"></a>
+
+			<a href="#"><img src="img/black-friday-landing-cadastro-email_22.png" alt="Infantil" title="Infantil"></a>
+
+			<a href="#"><img src="img/black-friday-landing-cadastro-email_24.png" alt="Casa" title="Casa"></a>
+
+			<a href="#"><img src="img/black-friday-landing-cadastro-email_31.png" alt="Alimentação" title="Alimentação"></a>
+
+			<a href="#"><img src="img/black-friday-landing-cadastro-email_32.png" alt="Esportes" title="Esportes"></a>
+
+			<a href="#"><img src="img/black-friday-landing-cadastro-email_33.png" alt="Celular" title="Celular"></a>
+
+			<a href="#"><img src="img/black-friday-landing-cadastro-email_34.png" alt="Presente" title="Presente"></a>
+
+			<a href="#"><img src="img/black-friday-landing-cadastro-email_35.png" alt="Acessórios" title="Acessórios"></a>
+		</article>
+	</main>
+
+</body>
+</html>

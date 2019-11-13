@@ -1,0 +1,33 @@
+p{
+    text-align: center;
+    font-family: sans-serif, arial;
+}
+body{
+    margin: 0;
+    padding: 0;
+    background-color: black;
+}
+.formulario{
+    
+    margin: auto;
+    width: max-content;
+}
+.button{
+    
+    margin: auto;
+    width: max-content;
+}
+.fr-carrosel{
+    color: yellow;
+}
+.fr-form{
+    color: white;
+}
+input[type="submit"]{
+    padding: 20px;
+}
+input[type="email"]{
+    width: 350px;
+    height: 30px;
+    margin: 20px;
+}
